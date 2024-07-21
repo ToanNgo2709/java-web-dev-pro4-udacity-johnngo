@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "e13f957f-9491-4cef-8960-65e7b8ea43a7",
+		"name": "eCommerce_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15039673"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"user1\",\r\n    \"password\":\"testtest\",\r\n    \"confirmPassword\":\"testtest\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user1\",\r\n    \"password\":\"testtest\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcyMjQ2OTQzOSwiaWF0IjoxNzIxNjA1NDM1fQ.fGxmJXAm9PooA9nzRsx81IY1Dih5Y2yejfZPSn-ij8LRCuchD4r0FQ42Sca6QWzowS_OgOn9s2izxudANj6MTg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8083/api/user/user1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"user1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add To Cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcyMjQ2OTQzOSwiaWF0IjoxNzIxNjA1NDM1fQ.fGxmJXAm9PooA9nzRsx81IY1Dih5Y2yejfZPSn-ij8LRCuchD4r0FQ42Sca6QWzowS_OgOn9s2izxudANj6MTg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"user1\",\r\n    \"itemId\" : 2,\r\n    \"quantity\" : 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/cart/addToCart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"cart",
+						"addToCart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submitOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcyMjQ2OTQzOSwiaWF0IjoxNzIxNjA1NDM1fQ.fGxmJXAm9PooA9nzRsx81IY1Dih5Y2yejfZPSn-ij8LRCuchD4r0FQ42Sca6QWzowS_OgOn9s2izxudANj6MTg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/order/submit/user1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"order",
+						"submit",
+						"user1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserOrderHistory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcyMjQ2OTQzOSwiaWF0IjoxNzIxNjA1NDM1fQ.fGxmJXAm9PooA9nzRsx81IY1Dih5Y2yejfZPSn-ij8LRCuchD4r0FQ42Sca6QWzowS_OgOn9s2izxudANj6MTg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8083/api/order/history/user1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"order",
+						"history",
+						"user1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getItems",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcyMjQ2OTQzOSwiaWF0IjoxNzIxNjA1NDM1fQ.fGxmJXAm9PooA9nzRsx81IY1Dih5Y2yejfZPSn-ij8LRCuchD4r0FQ42Sca6QWzowS_OgOn9s2izxudANj6MTg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8083/api/item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"item"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,13 +1,17 @@
 package com.example.demo.security;
 
 import com.auth0.jwt.JWT;
-import com.example.demo.model.persistence.User;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.example.demo.model.requests.CreateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -18,9 +22,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
-import static com.example.demo.security.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    final Logger logger = LogManager.getLogger(JWTAuthenticationFilter.class);
+
 
     private AuthenticationManager authenticationManager;
 
@@ -53,11 +59,20 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             FilterChain chain,
             Authentication auth
     ) {
-
         String token = JWT.create()
                 .withSubject(((User) auth.getPrincipal()).getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
                 .sign(HMAC512(SecurityConstants.SECRET.getBytes()));
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+        logger.info("User {} authenticated, JWT issued", ((User) auth.getPrincipal()).getUsername());
+    }
+
+    @Override
+    protected void unsuccessfulAuthentication(javax.servlet.http.HttpServletRequest request,
+                                              javax.servlet.http.HttpServletResponse response,
+                                              AuthenticationException failed)
+            throws IOException, javax.servlet.ServletException {
+        super.unsuccessfulAuthentication(request, response, failed);
     }
 }
