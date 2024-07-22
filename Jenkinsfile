@@ -13,6 +13,8 @@ pipeline {
                 sh 'git --version'
                 sh 'which git'
                 sh 'env'
+                sh 'which curl || echo "curl not found"'
+                sh 'which wget || echo "wget not found"'
             }
         }
 
@@ -47,18 +49,21 @@ pipeline {
             }
         }
 
-        stage('Install curl') {
-            steps {
-                sh 'apt-get update && apt-get install -y curl'
-            }
-        }
-
         stage('Debug POM') {
             steps {
                 dir('starter_code') {
-                    sh 'wget https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.5.5/spring-boot-starter-parent-2.5.5.pom -O test.pom'
-                    sh 'cat test.pom'
-                    sh 'cat pom.xml'
+                    sh '''
+                    if command -v curl >/dev/null 2>&1; then
+                        curl -s https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.5.5/spring-boot-starter-parent-2.5.5.pom -o test.pom
+                    elif command -v wget >/dev/null 2>&1; then
+                        wget -q https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.5.5/spring-boot-starter-parent-2.5.5.pom -O test.pom
+                    else
+                        echo "Neither curl nor wget is available. Cannot download POM."
+                        exit 1
+                    fi
+                    cat test.pom
+                    cat pom.xml
+                    '''
                 }
             }
         }
