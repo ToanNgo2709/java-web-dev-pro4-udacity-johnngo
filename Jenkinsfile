@@ -1,10 +1,8 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.9.8'  // Make sure this version is configured in Jenkins
-    }
     environment {
-        MAVEN_HOME = tool 'Maven 3.9.8'
+        MAVEN_VERSION = '3.9.8'
+        MAVEN_HOME = "/opt/maven"
         PATH = "${MAVEN_HOME}/bin:${env.PATH}"
     }
     stages {
@@ -13,7 +11,14 @@ pipeline {
                 git url: 'https://github.com/ToanNgo2709/java-web-dev-pro4-udacity-johnngo.git', branch: 'main'
             }
         }
-
+        stage('Install Maven') {
+            steps {
+                sh """
+                curl -fsSL https://archive.apache.org/dist/maven/maven-3/\${MAVEN_VERSION}/binaries/apache-maven-\${MAVEN_VERSION}-bin.tar.gz | tar xzf - -C /opt
+                mv /opt/apache-maven-\${MAVEN_VERSION} ${MAVEN_HOME}
+                """
+            }
+        }
         stage('Build') {
             steps {
                 dir('starter_code') {
