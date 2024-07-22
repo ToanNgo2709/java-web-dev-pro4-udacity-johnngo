@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserController {
 
-	final Logger logger = LogManager.getLogger(UserController.class);
+	private static final Logger logger = LogManager.getLogger(UserController.class);
 
 	@Autowired
 	private UserRepository userRepository;

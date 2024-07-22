@@ -7,9 +7,9 @@ import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.ItemRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.requests.ModifyCartRequest;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,11 +20,10 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 import static com.example.demo.utils.TestUtils.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class CartControllerTest {
 
@@ -40,7 +39,7 @@ public class CartControllerTest {
     @Mock
     private ItemRepository itemRepository;
 
-    @Before
+    @BeforeEach
     public void setup(){
         when(userRepository.findByUsername("toanngo")).thenReturn(createUser());
         when(itemRepository.findById(any())).thenReturn(Optional.of(createItem(1)));

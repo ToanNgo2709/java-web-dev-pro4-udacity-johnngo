@@ -5,23 +5,20 @@ import com.example.demo.model.User;
 import com.example.demo.model.UserOrder;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.UserRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static com.example.demo.utils.TestUtils.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderControllerTest {
 
@@ -34,7 +31,7 @@ public class OrderControllerTest {
     @Mock
     private OrderRepository orderRepository;
 
-    @Before
+    @BeforeEach
     public void setup(){
         User user = createUser();
 

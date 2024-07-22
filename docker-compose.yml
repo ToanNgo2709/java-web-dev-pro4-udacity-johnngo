@@ -24,6 +24,7 @@ services:
     environment:
       - SPLUNK_START_ARGS=--accept-license
       - SPLUNK_PASSWORD=your_splunk_password
+      - TZ=Asia/Ho_Chi_Minh
     ports:
       - "8000:8000"
       - "8088:8088"

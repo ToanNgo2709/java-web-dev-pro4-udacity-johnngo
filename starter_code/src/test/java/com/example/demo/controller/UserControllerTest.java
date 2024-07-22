@@ -6,22 +6,19 @@ import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.requests.CreateUserRequest;
 import com.example.demo.utils.TestUtils;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserControllerTest {
 
@@ -33,7 +30,7 @@ public class UserControllerTest {
 
     private BCryptPasswordEncoder encoder = mock(BCryptPasswordEncoder.class);
 
-    @Before
+    @BeforeEach
     public void setUp(){
         userController = new UserController();
 

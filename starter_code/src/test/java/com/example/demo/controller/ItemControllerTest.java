@@ -3,14 +3,12 @@ package com.example.demo.controller;
 import com.example.demo.controllers.ItemController;
 import com.example.demo.model.Item;
 import com.example.demo.repository.ItemRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,10 +16,9 @@ import java.util.Optional;
 
 import static com.example.demo.utils.TestUtils.createItem;
 import static com.example.demo.utils.TestUtils.createItems;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class ItemControllerTest {
 
@@ -30,7 +27,8 @@ public class ItemControllerTest {
 
     @Mock
     private ItemRepository itemRepository;
-    @Before
+
+    @BeforeEach
     public void setup(){
 
         when(itemRepository.findById(1L)).thenReturn(Optional.of(createItem(1)));
