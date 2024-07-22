@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.8'
-            args '-v /root/.m2:/root/.m2' // Optional: mount Maven local repository to speed up builds
-        }
-    }
-
+    agent any
     stages {
         stage('Checkout') {
             steps {
