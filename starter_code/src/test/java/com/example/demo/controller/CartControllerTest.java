@@ -12,8 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -25,7 +26,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class CartControllerTest {
 
     @InjectMocks
@@ -42,10 +44,8 @@ public class CartControllerTest {
 
     @Before
     public void setup(){
-
         when(userRepository.findByUsername("toanngo")).thenReturn(createUser());
         when(itemRepository.findById(any())).thenReturn(Optional.of(createItem(1)));
-
     }
 
 

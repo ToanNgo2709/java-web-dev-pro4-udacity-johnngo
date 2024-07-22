@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    environment:
+      - JAVA_OPTS=-Djava.awt.headless=true
+
+  splunk:
+    image: splunk/splunk:latest
+    container_name: splunk
+    ports:
+      - "8000:8000"  # Splunk Web Interface
+      - "8088:8088"  # HTTP Event Collector (HEC)
+      - "9997:9997"  # Splunk Universal Forwarder
+    environment:
+      SPLUNK_START_ARGS: --accept-license
+      SPLUNK_PASSWORD: changeme
+    volumes:
+      - splunk_data:/opt/splunk/var
+
+volumes:
+  jenkins_home:
+    driver: local
+  splunk_data:
+    driver: local

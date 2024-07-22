@@ -8,7 +8,7 @@
         <SplunkHttp
                 name="splunkhttp_main"
                 url="http://localhost:8088"
-                token="f0877fb0-c044-4217-bfea-edc60d08ee2b"
+                token="98b9bb70-f8e5-4446-a4c7-647b421c8d5e"
                 host="localhost"
                 index="ecommerce_api_dev"
                 type="raw"

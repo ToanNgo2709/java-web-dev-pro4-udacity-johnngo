@@ -39,7 +39,7 @@ public class TestUtils {
     public static User createUser() {
         User user = new User();
         user.setId(1L);
-        user.setUsername("fymo");
+        user.setUsername("toanngo");
         user.setPassword("password");
         user.setCart(createCart(user));
 

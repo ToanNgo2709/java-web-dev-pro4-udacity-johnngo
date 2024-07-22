@@ -11,7 +11,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
@@ -20,7 +22,8 @@ import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class OrderControllerTest {
 
     @InjectMocks
@@ -36,14 +39,14 @@ public class OrderControllerTest {
     public void setup(){
         User user = createUser();
 
-        when(userRepository.findByUsername("fymo")).thenReturn(user);
+        when(userRepository.findByUsername("toanngo")).thenReturn(user);
         when(orderRepository.findByUser(any())).thenReturn(createOrders());
     }
 
     @Test
     public void verify_submit(){
 
-        ResponseEntity<UserOrder> response = orderController.submit("fymo");
+        ResponseEntity<UserOrder> response = orderController.submit("toanngo");
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
 
@@ -72,7 +75,7 @@ public class OrderControllerTest {
     @Test
     public void verify_getOrdersForUser(){
 
-        ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser("fymo");
+        ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser("toanngo");
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
 
