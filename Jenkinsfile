@@ -10,6 +10,7 @@ pipeline {
             }
             stage('Build') {
                 steps {
+                    sh 'cd starter_code'
                     // Build the project using Maven
                     sh 'mvn clean package'
                 }
@@ -26,6 +27,7 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
                 }
             }
+        }
     }
 
     post {
