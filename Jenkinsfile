@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+            docker {
+                image 'maven:3.8.6-openjdk-11'
+                args '-v /workspace:/usr/src/mymaven'
+            }
+    }
     stages {
         stage('Checkout') {
             steps {
