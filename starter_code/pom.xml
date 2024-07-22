@@ -20,13 +20,13 @@
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>splunk-artifactory</id>
-            <name>Splunk Releases</name>
-            <url>https://splunk.jfrog.io/ui/native/ext-releases-local</url>
-        </repository>
-    </repositories>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>splunk-artifactory</id>-->
+<!--            <name>Splunk Releases</name>-->
+<!--            <url>https://splunk.jfrog.io/ui/native/ext-releases-local</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
 
 
     <dependencies>
@@ -79,11 +79,11 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.splunk.logging</groupId>
-            <artifactId>splunk-library-javalogging</artifactId>
-            <version>1.11.8</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.splunk.logging</groupId>-->
+<!--            <artifactId>splunk-library-javalogging</artifactId>-->
+<!--            <version>1.11.8</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
