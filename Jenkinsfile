@@ -32,8 +32,16 @@ pipeline {
         stage('Install Maven') {
             steps {
                 sh """
+                # Remove existing Maven installation if it exists
+                rm -rf ${MAVEN_HOME}
+
+                # Download and extract Maven
                 curl -fsSL https://archive.apache.org/dist/maven/maven-3/\${MAVEN_VERSION}/binaries/apache-maven-\${MAVEN_VERSION}-bin.tar.gz | tar xzf - -C /opt
+
+                # Rename the extracted directory to MAVEN_HOME
                 mv /opt/apache-maven-\${MAVEN_VERSION} ${MAVEN_HOME}
+
+                # Verify Maven installation
                 ${MAVEN_HOME}/bin/mvn --version
                 """
             }
