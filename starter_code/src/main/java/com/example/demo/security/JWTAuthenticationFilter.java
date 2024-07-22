@@ -4,8 +4,8 @@ import com.auth0.jwt.JWT;
 import com.example.demo.constant.SecurityConstants;
 import com.example.demo.requests.CreateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,7 +24,7 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private static final Logger logger = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
+    private static final Logger logger = LogManager.getLogger(JWTAuthenticationFilter.class);
 
 
     private AuthenticationManager authenticationManager;
