@@ -1,41 +1,70 @@
 pipeline {
     agent any
-        environment {
-            MAVEN_VERSION = '3.9.8'
-            MAVEN_HOME = "/opt/maven"
-            PATH = "${MAVEN_HOME}/bin:${env.PATH}"
-        }
+    environment {
+        MAVEN_VERSION = '3.9.8'
+        MAVEN_HOME = "/opt/maven"
+        PATH = "${MAVEN_HOME}/bin:${env.PATH}"
+    }
     stages {
+        stage('Diagnostic') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'git --version'
+                sh 'which git'
+                sh 'env'
+            }
+        }
+
         stage('Checkout') {
             steps {
-                // Clean workspace before cloning
                 deleteDir()
-                // Clone the repository
                 git url: 'https://github.com/ToanNgo2709/java-web-dev-pro4-udacity-johnngo.git', branch: 'main'
             }
         }
+
+        stage('Clean Maven Repo') {
+            steps {
+                sh 'rm -rf /root/.m2/repository'
+            }
+        }
+
         stage('Install Maven') {
             steps {
                 sh """
                 curl -fsSL https://archive.apache.org/dist/maven/maven-3/\${MAVEN_VERSION}/binaries/apache-maven-\${MAVEN_VERSION}-bin.tar.gz | tar xzf - -C /opt
                 mv /opt/apache-maven-\${MAVEN_VERSION} ${MAVEN_HOME}
+                ${MAVEN_HOME}/bin/mvn --version
                 """
             }
         }
+
+        stage('Debug POM') {
+            steps {
+                dir('starter_code') {
+                    sh 'wget https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.5.5/spring-boot-starter-parent-2.5.5.pom -O test.pom'
+                    sh 'cat test.pom'
+                    sh 'cat pom.xml'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 dir('starter_code') {
-                    sh 'mvn clean package'
+                    sh "${MAVEN_HOME}/bin/mvn clean package -X"
                 }
             }
         }
+
         stage('Test') {
             steps {
                 dir('starter_code') {
-                    sh 'mvn test'
+                    sh "${MAVEN_HOME}/bin/mvn test"
                 }
             }
         }
+
         stage('Deploy') {
             steps {
                 archiveArtifacts artifacts: 'starter_code/target/*.jar', allowEmptyArchive: true
@@ -48,6 +77,10 @@ pipeline {
         }
         failure {
             echo 'Build or tests failed!'
+        }
+        always {
+            echo 'Cleaning up workspace'
+            deleteDir()
         }
     }
 }
