@@ -1,13 +1,16 @@
 pipeline {
     agent any
-    environment {
-        MAVEN_VERSION = '3.9.8'
-        MAVEN_HOME = "/opt/maven"
-        PATH = "${MAVEN_HOME}/bin:${env.PATH}"
-    }
+        environment {
+            MAVEN_VERSION = '3.9.8'
+            MAVEN_HOME = "/opt/maven"
+            PATH = "${MAVEN_HOME}/bin:${env.PATH}"
+        }
     stages {
         stage('Checkout') {
             steps {
+                // Clean workspace before cloning
+                deleteDir()
+                // Clone the repository
                 git url: 'https://github.com/ToanNgo2709/java-web-dev-pro4-udacity-johnngo.git', branch: 'main'
             }
         }

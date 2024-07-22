@@ -13,6 +13,11 @@ services:
       - jenkins_home:/var/jenkins_home
     networks:
       - app-network
+    command: |
+      /bin/sh -c "
+      apt-get update && apt-get install -y git
+      /usr/local/bin/jenkins.sh
+      "
 
   splunk:
     image: splunk/splunk:latest
