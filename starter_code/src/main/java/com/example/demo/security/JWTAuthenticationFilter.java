@@ -1,9 +1,8 @@
 package com.example.demo.security;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.example.demo.model.requests.CreateUserRequest;
+import com.example.demo.constant.SecurityConstants;
+import com.example.demo.requests.CreateUserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

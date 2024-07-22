@@ -1,11 +1,11 @@
-package com.example.demo.model.persistence.repositories;
+package com.example.demo.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.model.persistence.User;
-import com.example.demo.model.persistence.UserOrder;
+import com.example.demo.model.User;
+import com.example.demo.model.UserOrder;
 import org.springframework.stereotype.Repository;
 
 @Repository

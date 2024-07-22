@@ -2,8 +2,8 @@ package com.example.demo.configuration;
 
 import com.example.demo.security.JWTAuthenticationFilter;
 import com.example.demo.security.JWTAuthenticationVerificationFilter;
-import com.example.demo.security.SecurityConstants;
-import com.example.demo.security.UserDetailsServiceImpl;
+import com.example.demo.constant.SecurityConstants;
+import com.example.demo.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

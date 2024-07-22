@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.persistence.Item;
-import com.example.demo.model.persistence.repositories.ItemRepository;
+import com.example.demo.model.Item;
+import com.example.demo.repository.ItemRepository;
 
 @RestController
 @RequestMapping("/api/item")

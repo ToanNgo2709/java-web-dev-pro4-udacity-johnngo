@@ -1,9 +1,9 @@
-package com.example.demo.model.persistence.repositories;
+package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.User;
+import com.example.demo.model.Cart;
+import com.example.demo.model.User;
 
 import org.springframework.stereotype.Repository;
 

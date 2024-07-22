@@ -1,14 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.controllers.CartController;
-import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.Item;
-import com.example.demo.model.persistence.repositories.CartRepository;
-import com.example.demo.model.persistence.repositories.ItemRepository;
-import com.example.demo.model.persistence.repositories.UserRepository;
-import com.example.demo.model.requests.ModifyCartRequest;
+import com.example.demo.model.Cart;
+import com.example.demo.model.Item;
+import com.example.demo.repository.CartRepository;
+import com.example.demo.repository.ItemRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.requests.ModifyCartRequest;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -20,9 +20,7 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 import static com.example.demo.utils.TestUtils.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

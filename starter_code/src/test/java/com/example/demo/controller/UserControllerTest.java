@@ -1,15 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.controllers.UserController;
-import com.example.demo.model.persistence.User;
-import com.example.demo.model.persistence.repositories.CartRepository;
-import com.example.demo.model.persistence.repositories.UserRepository;
-import com.example.demo.model.requests.CreateUserRequest;
+import com.example.demo.model.User;
+import com.example.demo.repository.CartRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.requests.CreateUserRequest;
 import com.example.demo.utils.TestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

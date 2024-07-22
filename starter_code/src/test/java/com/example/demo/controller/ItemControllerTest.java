@@ -1,14 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.controllers.ItemController;
-import com.example.demo.model.persistence.Item;
-import com.example.demo.model.persistence.repositories.ItemRepository;
+import com.example.demo.model.Item;
+import com.example.demo.repository.ItemRepository;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;

@@ -1,9 +1,9 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.Item;
-import com.example.demo.model.persistence.User;
-import com.example.demo.model.persistence.UserOrder;
+import com.example.demo.model.Cart;
+import com.example.demo.model.Item;
+import com.example.demo.model.User;
+import com.example.demo.model.UserOrder;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;

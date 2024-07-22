@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.example.demo.security.SecurityConstants.*;
+import static com.example.demo.constant.SecurityConstants.*;
 
 public class JWTAuthenticationVerificationFilter extends BasicAuthenticationFilter {
 

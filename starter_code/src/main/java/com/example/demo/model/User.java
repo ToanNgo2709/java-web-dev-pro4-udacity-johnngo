@@ -1,4 +1,4 @@
-package com.example.demo.model.persistence;
+package com.example.demo.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,11 +12,17 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.keygen.KeyGenerators;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
 	@Id
@@ -38,44 +44,4 @@ public class User {
 	private String password;
 
 	String salt = KeyGenerators.string().generateKey(); // generates a random 8-byte salt that is then hex-encoded
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-	
-	
-	
 }

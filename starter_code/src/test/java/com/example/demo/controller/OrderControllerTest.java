@@ -1,16 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.controllers.OrderController;
-import com.example.demo.model.persistence.User;
-import com.example.demo.model.persistence.UserOrder;
-import com.example.demo.model.persistence.repositories.OrderRepository;
-import com.example.demo.model.persistence.repositories.UserRepository;
+import com.example.demo.model.User;
+import com.example.demo.model.UserOrder;
+import com.example.demo.repository.OrderRepository;
+import com.example.demo.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;

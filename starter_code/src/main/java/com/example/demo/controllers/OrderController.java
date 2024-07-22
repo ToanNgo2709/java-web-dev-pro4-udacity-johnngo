@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.User;
-import com.example.demo.model.persistence.UserOrder;
-import com.example.demo.model.persistence.repositories.CartRepository;
-import com.example.demo.model.persistence.repositories.OrderRepository;
-import com.example.demo.model.persistence.repositories.UserRepository;
+import com.example.demo.model.User;
+import com.example.demo.model.UserOrder;
+import com.example.demo.repository.OrderRepository;
+import com.example.demo.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/order")

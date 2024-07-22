@@ -1,10 +1,10 @@
 package com.example.demo.controllers;
 
-import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.User;
-import com.example.demo.model.persistence.repositories.CartRepository;
-import com.example.demo.model.persistence.repositories.UserRepository;
-import com.example.demo.model.requests.CreateUserRequest;
+import com.example.demo.model.Cart;
+import com.example.demo.model.User;
+import com.example.demo.repository.CartRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.requests.CreateUserRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
