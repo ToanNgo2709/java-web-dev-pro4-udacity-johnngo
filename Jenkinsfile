@@ -1,11 +1,20 @@
 pipeline {
-    agent {
-            docker {
-                image 'maven:3.8.6-openjdk-11'
-                args '-v /workspace:/usr/src/mymaven'
-            }
-    }
+    agent any
     stages {
+         stage('Install Maven') {
+            steps {
+                // Install Maven
+                sh '''
+                MAVEN_VERSION=3.9.8
+                curl -O https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+                tar -xzf apache-maven-${MAVEN_VERSION}-bin.tar.gz
+                sudo mv apache-maven-${MAVEN_VERSION} /usr/local/apache-maven
+                export M2_HOME=/usr/local/apache-maven
+                export PATH=$M2_HOME/bin:$PATH
+                '''
+            }
+        }
+
         stage('Checkout') {
             steps {
                 // Checkout source code from Git repository

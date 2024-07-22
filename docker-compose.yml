@@ -12,15 +12,6 @@ services:
       - ./workspace:/workspace  # Mount workspace to share files with Maven container
     environment:
       - JAVA_OPTS=-Djava.awt.headless=true
-    depends_on:
-      - maven  # Ensure Maven container starts before Jenkins
-
-  maven:
-    image: maven:3.8.6-openjdk-11
-    container_name: maven
-    volumes:
-      - ./workspace:/usr/src/mymaven  # Share files with Jenkins
-    # No entrypoint needed; container will be used as an environment for Maven commands
 
   splunk:
     image: splunk/splunk:latest
