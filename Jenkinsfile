@@ -1,7 +1,13 @@
 pipeline {
     agent any
     stages {
-         stage('Install Maven') {
+        stage('Checkout') {
+            steps {
+                // Checkout source code from Git repository
+                git url: 'https://github.com/ToanNgo2709/java-web-dev-pro4-udacity-johnngo.git', branch: 'main'
+            }
+        }
+        stage('Install Maven') {
             steps {
                 // Install Maven
                 sh '''
@@ -15,12 +21,6 @@ pipeline {
             }
         }
 
-        stage('Checkout') {
-            steps {
-                // Checkout source code from Git repository
-                git url: 'https://github.com/ToanNgo2709/java-web-dev-pro4-udacity-johnngo.git', branch: 'main'
-            }
-        }
         stage('Build') {
             steps {
                 // Change directory and build the project using Maven
