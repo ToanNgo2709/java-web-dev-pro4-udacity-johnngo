@@ -39,6 +39,12 @@ pipeline {
             }
         }
 
+        stage('Install curl') {
+            steps {
+                sh 'apt-get update && apt-get install -y curl'
+            }
+        }
+
         stage('Debug POM') {
             steps {
                 dir('starter_code') {
